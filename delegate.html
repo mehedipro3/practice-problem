@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bubble</title>
+</head>
+<body>
+  <h1>exploring event delegate</h1>
+  <section>
+    <ul id="list-container">
+      <li class="item">Lorem, ipsum dolor.</li>
+      <li class="item">Corporis, ipsa illo!</li>
+      <li class="item">Suscipit, veniam magnam.</li>
+      <li class="item">Vero, id deleniti?</li>
+      <li class="item">Soluta, dolore aliquam!</li>
+      <li class="item">Provident, nisi totam.</li>
+    </ul>
+    <button id="btn-new">add new</button>
+  </section>
+  <script>
+    const items = document.getElementsByClassName('item');
+    console.log(items);
+    for(const item of items)
+  {
+    item.addEventListener('click',function(event){
+      event.target.parentNode.removeChild(event.target);
+    })
+    document.getElementById('list-container').addEventListener('click',function(event){
+      event.target.parentNode.removeChild(event.target);
+    })
+    
+  }
+  document.getElementById('btn-new').addEventListener('click',function(){
+    const listContainer = document.getElementById('list-container');
+    const li = document.createElement('li');
+    li.innerText = 'Brand new container';
+    li.classList.add('item');
+    listContainer.appendChild(li);
+  })
+  </script>
+</body>
+</html>
